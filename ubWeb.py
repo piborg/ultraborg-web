@@ -145,6 +145,45 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '</body>\n'
             httpText += '</html>\n'
             self.send(httpText)
+        elif getPath == '/servo':
+            # Alternative page with only servo control, move sliders to change the servo positions
+            httpText = '<html>\n'
+            httpText += '<head>\n'
+            httpText += '<style>\n'
+            httpText += ' input[type=range][orient=vertical]\n'
+            httpText += ' {\n'
+            httpText += '  writing-mode: bt-lr; /* IE */\n'
+            httpText += '  -webkit-appearance: slider-vertical; /* WebKit */\n'
+            httpText += '  padding: 0 0;\n'
+            httpText += ' }\n'
+            httpText += '</style>\n'
+            httpText += '<script language="JavaScript"><!--\n'
+            httpText += 'function SetServo(servo, position) {\n'
+            httpText += ' var iframe = document.getElementById("setPosition");\n'
+            httpText += ' position = position / 100.0;\n'
+            httpText += ' iframe.src = "/set/" + servo + "/" + position;\n'
+            httpText += '}\n'
+            httpText += '//--></script>\n'
+            httpText += '</head>\n'
+            httpText += '<body>\n'
+            httpText += '<table border="0" style="width:100%%;"><tr>'
+            httpText += ' <td width="25%%"><center>'
+            httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(1, this.value);" />\n' % (sliderHeight)
+            httpText += ' </center></td>'
+            httpText += ' <td width="25%%"><center>'
+            httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(2, this.value);" />\n' % (sliderHeight)
+            httpText += ' </center></td>'
+            httpText += ' <td width="25%%"><center>'
+            httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(3, this.value);" />\n' % (sliderHeight)
+            httpText += ' </center></td>'
+            httpText += ' <td width="25%%"><center>'
+            httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(4, this.value);" />\n' % (sliderHeight)
+            httpText += ' </center></td>'
+            httpText += '</tr></table>'
+            httpText += '<iframe id="setPosition" src="/set/0/0" width="100%%" height="100" frameborder="0"></iframe>\n'
+            httpText += '</body>\n'
+            httpText += '</html>\n'
+            self.send(httpText)
         elif getPath == '/distances':
             # Repeated reading of the ultrasonic distances, set a delayed refresh
             # We use AJAX to avoid screen refreshes caused by refreshing a frame
