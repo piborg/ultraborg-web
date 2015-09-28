@@ -42,21 +42,21 @@ class WebServer(SocketServer.BaseRequestHandler):
             distance3 = int(UB.GetDistance3())
             distance4 = int(UB.GetDistance4())
             # Build a table for the values
-            httpText = '<html><body><table border="0" style="width:100%%"><tr>'
+            httpText = '<html><body><table border="0" style="width:100%"><tr>'
             if distance1 == 0:
-                httpText += '<td width="25%%"><center><h2>None</h2></center></td>'
+                httpText += '<td width="25%"><center><h2>None</h2></center></td>'
             else:
                 httpText += '<td width="25%%"><center><h2>%04d</h2></center></td>' % (distance1)
             if distance2 == 0:
-                httpText += '<td width="25%%"><center><h2>None</h2></center></td>'
+                httpText += '<td width="25%"><center><h2>None</h2></center></td>'
             else:
                 httpText += '<td width="25%%"><center><h2>%04d</h2></center></td>' % (distance2)
             if distance3 == 0:
-                httpText += '<td width="25%%"><center><h2>None</h2></center></td>'
+                httpText += '<td width="25%"><center><h2>None</h2></center></td>'
             else:
                 httpText += '<td width="25%%"><center><h2>%04d</h2></center></td>' % (distance3)
             if distance4 == 0:
-                httpText += '<td width="25%%"><center><h2>None</h2></center></td>'
+                httpText += '<td width="25%"><center><h2>None</h2></center></td>'
             else:
                 httpText += '<td width="25%%"><center><h2>%04d</h2></center></td>' % (distance4)
             httpText += '</tr></table></body></html>'
@@ -97,7 +97,7 @@ class WebServer(SocketServer.BaseRequestHandler):
             position3 = UB.GetServoPosition3() * 100.0
             position4 = UB.GetServoPosition4() * 100.0
             # Build a table for the values
-            httpText = '<html><body><table border="0" style="width:100%%"><tr>'
+            httpText = '<html><body><table border="0" style="width:100%"><tr>'
             httpText += '<td width="25%%"><center><h2>%.0f %%</h2></center></td>' % (position1)
             httpText += '<td width="25%%"><center><h2>%.0f %%</h2></center></td>' % (position2)
             httpText += '<td width="25%%"><center><h2>%.0f %%</h2></center></td>' % (position3)
@@ -125,23 +125,23 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '//--></script>\n'
             httpText += '</head>\n'
             httpText += '<body>\n'
-            httpText += '<table border="0" style="width:100%%;"><tr>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += '<table border="0" style="width:100%;"><tr>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(1, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(2, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(3, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(4, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
             httpText += '</tr></table>'
-            httpText += '<iframe id="setPosition" src="/set/0/0" width="100%%" height="100" frameborder="0"></iframe>\n'
+            httpText += '<iframe id="setPosition" src="/set/0/0" width="100%" height="100" frameborder="0"></iframe>\n'
             httpText += '<br /><center><h2>Distances (mm)</h2></centre><br />\n'
-            httpText += '<iframe src="/distances" width="100%%" height="100" frameborder="0"></iframe>\n'
+            httpText += '<iframe src="/distances" width="100%" height="100" frameborder="0"></iframe>\n'
             httpText += '</body>\n'
             httpText += '</html>\n'
             self.send(httpText)
@@ -166,21 +166,21 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '//--></script>\n'
             httpText += '</head>\n'
             httpText += '<body>\n'
-            httpText += '<table border="0" style="width:100%%;"><tr>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += '<table border="0" style="width:100%;"><tr>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(1, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(2, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(3, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
-            httpText += ' <td width="25%%"><center>'
+            httpText += ' <td width="25%"><center>'
             httpText += '  <input type="range" min="-100" max="100" value="0" orient="vertical" style="width:100%%; height:%dpx" onchange="SetServo(4, this.value);" />\n' % (sliderHeight)
             httpText += ' </center></td>'
             httpText += '</tr></table>'
-            httpText += '<iframe id="setPosition" src="/set/0/0" width="100%%" height="100" frameborder="0"></iframe>\n'
+            httpText += '<iframe id="setPosition" src="/set/0/0" width="100%" height="100" frameborder="0"></iframe>\n'
             httpText += '</body>\n'
             httpText += '</html>\n'
             self.send(httpText)
